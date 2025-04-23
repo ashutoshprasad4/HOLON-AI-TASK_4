@@ -1,0 +1,52 @@
+# Python-specific ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+
+# Virtual environment
+venv/
+.venv/
+env/
+*.env
+
+# Sensitive files
+credentials.json  # Google Cloud service account key
+.env             # Environment variables (OPENAI_API_KEY, etc.)
+
+# Generated files
+mock_ga_data.csv  # Mock Google Analytics data
+summary_report.json  # Multilingual report
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Frontend directory (bi-agent-frontend)
+bi-agent-frontend/node_modules/
+bi-agent-frontend/.env
+bi-agent-frontend/build/
+bi-agent-frontend/dist/
+bi-agent-frontend/.cache/
+bi-agent-frontend/*.log
+bi-agent-frontend/yarn.lock
+bi-agent-frontend/package-lock.json
