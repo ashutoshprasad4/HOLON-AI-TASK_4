@@ -1,170 +1,261 @@
+Sure! Here's your full project documentation converted into a structured and clean .md format:
+
+
+---
+
 Business Intelligence Chatbot
-A Business Intelligence (BI) chatbot designed for non-technical SME owners in Asia, providing insights from Google Analytics data through a conversational interface. The chatbot supports English, Mandarin (zh-cn), and Cantonese (zh-hk) queries, with responses including text and interactive Plotly charts for trends. It currently uses mock Google Analytics data for 365 days (2025) but can be extended to connect to the Google Analytics Data API (v1) for real GA4 data.
-Features
 
-Multilingual Support: Handles queries and responses in English, Mandarin, and Cantonese using deep-translator.
-Data Insights: Answers questions about sessions, users, pageviews, bounce rate, event count, and more.
-Interactive Charts: Generates Plotly line charts for trend queries (e.g., "Show the trend of sessions over time").
-FastAPI Backend: Processes queries with a LangChain LLM (LLaMA 3.1 via OpenRouter) and serves data via REST API.
-React Frontend: Displays chat interface and charts using react-plotly.js.
-Mock Data: Uses mock_ga_data.csv (365 days, 2025) with realistic metrics and dimensions.
-Git Management: Includes .gitignore to exclude sensitive and generated files.
+A Business Intelligence (BI) chatbot designed for non-technical SME owners in Asia. It provides insights from Google Analytics data through a conversational interface.
 
-Project Structure
+🌐 Multilingual: English, Mandarin (zh-cn), Cantonese (zh-hk)
+
+📈 Interactive Charts: Trend visualizations using Plotly
+
+⚡ FastAPI + React: Backend with LangChain LLM (LLaMA 3.1 via OpenRouter), Frontend with React
+
+📊 Mock Data: Based on Google Analytics-style metrics
+
+🔌 Optional GA4 Integration: Easily extendable to real GA4 data
+
+
+
+---
+
+✨ Features
+
+Multilingual Support: English, Mandarin, Cantonese via deep-translator
+
+GA Data Insights: Sessions, Users, Pageviews, Bounce Rate, Event Count, etc.
+
+Interactive Visuals: Trend queries return Plotly line charts
+
+LangChain + LLaMA 3.1: LLM integration using OpenRouter API
+
+Mock GA Data: 365 days of mock analytics data for 2025
+
+REST API: Easy query access via FastAPI
+
+Frontend: Chat UI with chart rendering using react-plotly.js
+
+
+
+---
+
+📁 Project Structure
+
 bi-agent/
-├── bi-agent-frontend/      # React frontend
+├── bi-agent-frontend/        # React frontend
 │   ├── src/
-│   │   ├── Chat.js        # Main chat component with Plotly charts
-│   │   ├── Chat.css       # Styles for chat interface
-│   │   ├── App.js         # Root React component
-│   │   └── App.css        # Styles for app
-│   ├── package.json       # Node.js dependencies
+│   │   ├── Chat.js           # Chat UI with Plotly charts
+│   │   ├── Chat.css          # Chat styling
+│   │   ├── App.js            # React entry point
+│   │   └── App.css           # App-wide styles
+│   ├── package.json          # Frontend dependencies
 │   └── ...
-├── main.py                # FastAPI backend with LLM and data processing
-├── generate_mock_data.py  # Script to generate 365-day mock GA data
-├── mock_ga_data.csv       # Mock Google Analytics data (generated)
-├── summary_report.json    # Multilingual report (generated)
-├── .gitignore             # Git ignore file
-├── .env                   # Environment variables (not tracked)
-├── README.md              # This file
-└── venv/                  # Python virtual environment (not tracked)
+├── main.py                   # FastAPI backend
+├── generate_mock_data.py     # Mock data generator
+├── mock_ga_data.csv          # 365-day GA-style mock data
+├── summary_report.json       # Multilingual summary report (generated)
+├── .gitignore                # Exclude env, data, build files
+├── .env                      # API keys and environment config (not tracked)
+├── README.md                 # This file
+└── venv/                     # Python virtual environment (not tracked)
 
-Prerequisites
 
-Python 3.12: For backend.
-Node.js 16+: For frontend.
-Git: For version control.
-Google Analytics Data API (optional): For real GA4 data (not currently used).
+---
 
-Setup Instructions
-Backend Setup
+🧩 Prerequisites
 
-Clone the Repository:
+Python 3.12+
+
+Node.js 16+
+
+Git
+
+OpenRouter API key (from https://openrouter.ai)
+
+(Optional) Google Analytics Data API v1 access for real GA4 data
+
+
+
+---
+
+🛠 Setup Instructions
+
+Backend
+
+1. Clone the Repository:
+
 git clone https://github.com/yourusername/bi-agent.git
 cd bi-agent
 
 
-Create Virtual Environment:
+2. Create Virtual Environment:
+
 python -m venv venv
-.\venv\Scripts\activate  # Windows
+.\venv\Scripts\activate  # For Windows
 
 
-Install Python Dependencies:
+3. Install Dependencies:
+
 pip install fastapi uvicorn pandas numpy plotly langchain-openai deep-translator python-dotenv
 
 
-Set Environment Variables:Create a .env file in the root directory:
-OPENAI_API_KEY=your_openai_key  # OpenRouter API key
+4. Create .env File:
+
+OPENAI_API_KEY=your_openai_key
 OPENAI_BASE_URL=https://openrouter.ai/api/v1
 USE_MOCK_DATA=true
 
-Obtain an OpenRouter API key from openrouter.ai.
 
-Generate Mock Data (if not already present):
+5. Generate Mock Data (if not present):
+
 python generate_mock_data.py
 
-This creates mock_ga_data.csv with 365 days of data for 2025.
 
 
-Frontend Setup
 
-Navigate to Frontend Directory:
+---
+
+Frontend
+
+1. Navigate to Frontend:
+
 cd bi-agent-frontend
 
 
-Install Node.js Dependencies:
+2. Install Node.js Dependencies:
+
 npm install
 
 
-Verify Dependencies:Ensure react-plotly.js and plotly.js are installed:
+3. Verify Required Packages:
+
 npm list react-plotly.js plotly.js
 
 
 
-Running the Application
 
-Start the Backend:
-cd C:\Users\ashut\hongkong\bi-agent
+---
+
+🚀 Running the Application
+
+Backend
+
+cd bi-agent
 .\venv\Scripts\activate
 python main.py
 
-The API will run at http://localhost:8000.
+API available at: http://localhost:8000
 
-Start the Frontend:
+
+Frontend
+
 cd bi-agent-frontend
 npm start
 
-The React app will open at http://localhost:3000.
-
-
-Usage
-
-Access the Chatbot: Open http://localhost:3000 in a browser.
-Submit Queries:
-English: "What was the bounce rate on July 15, 2025?" or "Show the trend of sessions over time."
-Mandarin: "2025年1月的平均跳出率是多少？"
-Cantonese: "2025年7月15號嘅跳出率係幾多？" or "2025年會話數同頁面瀏覽量嘅趨勢係點？"
-
-
-View Responses: Text responses appear in the chat interface, with Plotly charts for trend queries.
-Test API Directly:curl -X POST http://localhost:8000/query -H "Content-Type: application/json" -d "{\"query\":\"Show the trend of sessions over time\",\"language\":\"en\"}"
+App opens at: http://localhost:3000
 
 
 
-Testing
-Test the following queries to verify functionality:
+---
 
-Specific Metric: "What was the bounce rate on July 15, 2025?" (English, no chart).
-Trend: "Show the trend of sessions and pageviews over time" (English, with chart).
-New Column: "What is the total event count for 2025?" (English, no chart).
-Multilingual (Mandarin): "2025年1月的平均跳出率是多少？" (zh-cn, no chart).
-Multilingual (Cantonese): "2025年會話數同頁面瀏覽量嘅趨勢係點？" (zh-hk, with chart).
+💬 Usage
 
-Check the browser console (F12 > Console) and backend terminal for errors.
-Deliverables
+Example Queries
 
-GitHub Repository: Contains all source code, excluding sensitive files (via .gitignore).
-Screenshots: Capture frontend responses for the test queries, especially charts.
-Multilingual Report: Generate summary_report.json:python -c "
+English:
+
+"What was the bounce rate on July 15, 2025?"
+
+"Show the trend of sessions over time."
+
+
+Mandarin (zh-cn):
+
+"2025年1月的平均跳出率是多少？"
+
+
+Cantonese (zh-hk):
+
+"2025年7月15號嘅跳出率係幾多？"
+
+"2025年會話數同頁面瀏覽量嘅趨勢係點？"
+
+
+
+View Responses
+
+Text + Plotly charts (for trend-based queries)
+
+Use browser developer console (F12 > Console) to debug frontend
+
+
+Test the API Directly
+
+curl -X POST http://localhost:8000/query \
+-H "Content-Type: application/json" \
+-d '{"query":"Show the trend of sessions over time", "language":"en"}'
+
+
+---
+
+🧪 Testing
+
+Run the following to validate functionality:
+
+✅ Specific Metric (No Chart):
+"What was the bounce rate on July 15, 2025?"
+
+✅ Trend (Chart):
+"Show the trend of sessions and pageviews over time"
+
+✅ New Metric:
+"What is the total event count for 2025?"
+
+✅ Multilingual Mandarin:
+"2025年1月的平均跳出率是多少？"
+
+✅ Multilingual Cantonese (Chart):
+"2025年會話數同頁面瀏覽量嘅趨勢係點？"
+
+---
+
+🧰 Troubleshooting
+
+Backend
+
+Check if mock_ga_data.csv exists and has required columns
+
+Confirm .env is set correctly with OpenRouter API key
+
+
+Frontend
+
+Verify Plotly packages:
+npm list react-plotly.js plotly.js
+
+CORS issues? Make sure FastAPI allows requests from http://localhost:3000
+
+
+Translator Issues
+
 from deep_translator import GoogleTranslator
-import pandas as pd
-import json
-translator = GoogleTranslator(source='auto')
-df = pd.read_csv('mock_ga_data.csv')
-report = {
-    'en': f'2025 Total sessions: {df['sessions'].sum()}, Avg bounce rate: {df['bounce_rate'].mean():.2%}',
-    'zh-cn': translator.translate(f'2025总会话数: {df['sessions'].sum()}, 平均跳出率: {df['bounce_rate'].mean():.2%}', dest='zh-cn'),
-    'zh-hk': translator.translate(f'2025總會話數: {df['sessions'].sum()}, 平均跳出率: {df['bounce_rate'].mean():.2%}', dest='zh-hk')
-}
-with open('summary_report.json', 'w', encoding='utf-8') as f:
-    json.dump(report, f, ensure_ascii=False, indent=2)
-"
-
-
-
-Troubleshooting
-
-Backend Errors:
-Ensure mock_ga_data.csv exists and has columns: date, sessions, users, pageviews, bounce_rate, etc.
-Verify .env file and OpenRouter API key.
-
-
-Frontend Errors:
-Check react-plotly.js installation: npm list react-plotly.js.
-Ensure CORS is enabled in main.py for http://localhost:3000.
-
-
-Translation Issues:
-Test deep-translator:from deep_translator import GoogleTranslator
 print(GoogleTranslator(source='auto').translate("Test", dest="zh-hk"))
 
 
+---
+
+🌱 Future Improvements
+
+✅ Connect to real GA4 data using Google Analytics Data API (v1)
+
+📆 Support custom date ranges (e.g., "sessions for Q1 2025")
+
+📱 Improve frontend for mobile/responsive design
+
+🕘 Add query history and insights archive
 
 
 
-Future Improvements
-
-Connect to real Google Analytics Data API (v1) for GA4 data (see main.py comments for setup).
-Add support for custom date ranges (e.g., "Show sessions for Q1 2025").
-Enhance frontend with responsive design and query history.
-
+---
