@@ -1,9 +1,6 @@
-Sure! Here's your full project documentation converted into a structured and clean .md format:
 
 
----
-
-Business Intelligence Chatbot
+**Business Intelligence Chatbot***
 
 A Business Intelligence (BI) chatbot designed for non-technical SME owners in Asia. It provides insights from Google Analytics data through a conversational interface.
 
