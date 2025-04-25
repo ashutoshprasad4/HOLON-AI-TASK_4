@@ -190,10 +190,11 @@ Use browser developer console (F12 > Console) to debug frontend
 
 Test the API Directly
 
+```
 curl -X POST http://localhost:8000/query \
 -H "Content-Type: application/json" \
 -d '{"query":"Show the trend of sessions over time", "language":"en"}'
-
+```
 
 ---
 
