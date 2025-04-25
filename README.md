@@ -37,7 +37,7 @@ Frontend: Chat UI with chart rendering using react-plotly.js
 
 
 ---
-
+```
 📁 Project Structure
 
 bi-agent/
@@ -58,7 +58,7 @@ bi-agent/
 ├── README.md                 # This file
 └── venv/                     # Python virtual environment (not tracked)
 
-
+```
 ---
 
 🧩 Prerequisites
@@ -82,20 +82,23 @@ OpenRouter API key (from https://openrouter.ai)
 Backend
 
 1. Clone the Repository:
-
+```
 git clone https://github.com/yourusername/bi-agent.git
 cd bi-agent
+```
 
 
 2. Create Virtual Environment:
-
+```
 python -m venv venv
 .\venv\Scripts\activate  # For Windows
+```
 
 
 3. Install Dependencies:
-
+```
 pip install fastapi uvicorn pandas numpy plotly langchain-openai deep-translator python-dotenv
+```
 
 
 4. Create .env File:
@@ -106,8 +109,9 @@ USE_MOCK_DATA=true
 
 
 5. Generate Mock Data (if not present):
-
+```
 python generate_mock_data.py
+```
 
 
 
@@ -117,18 +121,21 @@ python generate_mock_data.py
 Frontend
 
 1. Navigate to Frontend:
-
+```
 cd bi-agent-frontend
+```
 
 
 2. Install Node.js Dependencies:
-
+```
 npm install
+```
 
 
 3. Verify Required Packages:
-
+```
 npm list react-plotly.js plotly.js
+```
 
 
 
@@ -138,19 +145,19 @@ npm list react-plotly.js plotly.js
 🚀 Running the Application
 
 Backend
-
+```
 cd bi-agent
 .\venv\Scripts\activate
 python main.py
-
+```
 API available at: http://localhost:8000
 
 
 Frontend
-
+```
 cd bi-agent-frontend
 npm start
-
+```
 App opens at: http://localhost:3000
 
 
@@ -231,15 +238,18 @@ Confirm .env is set correctly with OpenRouter API key
 Frontend
 
 Verify Plotly packages:
+```
 npm list react-plotly.js plotly.js
+```
 
 CORS issues? Make sure FastAPI allows requests from http://localhost:3000
 
 
 Translator Issues
-
+```
 from deep_translator import GoogleTranslator
 print(GoogleTranslator(source='auto').translate("Test", dest="zh-hk"))
+```
 
 
 ---
